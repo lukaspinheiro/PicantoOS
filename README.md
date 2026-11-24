@@ -74,4 +74,4 @@ dotnet run --project backend/src/PicantoOS.Api
 
 ## Author
 
-Built and maintained by **Lukas Pinheiro** ([@lukaspinheiro](https://github.com/lukaspinheiro)).
+Built and maintained by **Lukas Pinheiro** — [GitHub](https://github.com/lukaspinheiro) · [LinkedIn](https://www.linkedin.com/in/lukas-pinheiro/).
