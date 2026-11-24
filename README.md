@@ -2,6 +2,8 @@
 
 *Leia em [Português (Brasil)](README.pt-BR.md).*
 
+[![iOS CI](https://github.com/lukaspinheiro/PicantoOS/actions/workflows/ios-ci.yml/badge.svg)](https://github.com/lukaspinheiro/PicantoOS/actions/workflows/ios-ci.yml)
+[![Backend CI](https://github.com/lukaspinheiro/PicantoOS/actions/workflows/backend-ci.yml/badge.svg)](https://github.com/lukaspinheiro/PicantoOS/actions/workflows/backend-ci.yml)
 ![Swift 6](https://img.shields.io/badge/Swift-6.0-F05138?logo=swift&logoColor=white)
 ![iOS 17+](https://img.shields.io/badge/iOS-17%2B-000000?logo=apple&logoColor=white)
 ![.NET 10](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)
@@ -67,3 +69,9 @@ dotnet run --project backend/src/PicantoOS.Api
 - [Project Roadmap](docs/roadmap.md)
 - [Architecture Decision Records (ADRs)](docs/adr/001-carplay-audio-vs-entitlement.md)
 - [AI Assistant Context (AGENTS.md)](AGENTS.md)
+
+---
+
+## Author
+
+Built and maintained by **Lukas Pinheiro** ([@lukaspinheiro](https://github.com/lukaspinheiro)).
