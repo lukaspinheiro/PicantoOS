@@ -1,0 +1,43 @@
+name: iOS CI (XcodeGen + Swift Tests)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "ios/**"
+      - ".github/workflows/ios-ci.yml"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "ios/**"
+  workflow_dispatch:
+
+jobs:
+  test-and-build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test PicantoOBDKit Swift Package
+        working-directory: ios/PicantoOBDKit
+        run: swift test
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode Project
+        working-directory: ios
+        run: xcodegen generate
+
+      - name: Build PicantoOSApp (iOS Simulator, Unsigned)
+        working-directory: ios
+        run: |
+          xcodebuild \
+            -project PicantoOS.xcodeproj \
+            -scheme PicantoOSApp \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build

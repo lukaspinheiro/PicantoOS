@@ -1,0 +1,27 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+
+# Swift / Xcode / XcodeGen
+.build/
+*.xcodeproj
+*.xcworkspace
+DerivedData/
+xcuserdata/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Docker / Local env
+.env
+*.local
+infra/mosquitto/data/
+infra/mosquitto/log/
+
+# OS
+.DS_Store
+Thumbs.db

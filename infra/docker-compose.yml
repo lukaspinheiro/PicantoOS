@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: picanto-os-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: picanto_os
+      POSTGRES_USER: picanto
+      POSTGRES_PASSWORD: picanto_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - picanto_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U picanto -d picanto_os"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: picanto-os-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - picanto_mosquitto_data:/mosquitto/data
+      - picanto_mosquitto_log:/mosquitto/log
+
+volumes:
+  picanto_pgdata:
+  picanto_mosquitto_data:
+  picanto_mosquitto_log:

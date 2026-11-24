@@ -1,0 +1,35 @@
+name: Backend CI (.NET 10)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "backend/**"
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore dependencies
+        run: dotnet restore backend/PicantoOS.sln
+
+      - name: Build
+        run: dotnet build backend/PicantoOS.sln --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test backend/PicantoOS.sln --no-build --configuration Release
